@@ -1,0 +1,4 @@
+user_service/venv
+post_service/venv
+post_service/__pycache__
+.vscode

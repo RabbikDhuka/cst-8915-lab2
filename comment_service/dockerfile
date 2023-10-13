@@ -1,0 +1,23 @@
+FROM python:3.12.0-slim
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the requirements file to the container
+COPY requirements.txt .
+
+# Install any needed packages specified in requirements.txt
+RUN python -m pip install -r requirements.txt
+
+# Copy the current directory contents into the container at /app
+COPY . /app
+
+# Expose the port that the app will run on
+EXPOSE 5003
+
+# Define environment variable for Flask
+ENV FLASK_APP=app.py
+ENV FLASK_RUN_HOST=0.0.0.0
+
+# Command to run the application
+CMD ["flask", "run"]
